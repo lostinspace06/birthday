@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="slideshow">
+    <img src="img1.jpg" class="slide" />
+    <img src="img2.jpg" class="slide" />
+    <img src="img3.jpg" class="slide" />
+    <img src="img4.jpg" class="slide" />
+  </div>
+
+  <div class="overlay">
+    <h1>Happy birthday, Charvi!</h1>
+    <p>I really wanted to do a lot of stuff but now here i am with a last minute website &#128557;&#128557;&#128557</p>
+    <button onclick="showMessage()">Tap karo &#128511;&#128079;</button>
+    <a href="surprise.html"><button>"oreyyyy harshiii" ahh button &#128511;&#128511;&#128079;</button></a>
+    <p id="hiddenMessage">You're the funniest and the most beautiful hooman i ever known, me is a cat and you is my fav hooman.. EHEHEHEHEHEHEHHEHEHE (cringe vunte pattinchukoku pleaseeeee &#128557;&#128557;&#128557;</p>
+  </div>
+
+  <audio id="song" autoplay loop>
+    <source src="birthday.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .floating-heart {
+      position: fixed;
+      color: red;
+      animation: floatUp 4s ease-out forwards;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1.5);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  function spawnHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+
+    const emojis = ['❤','🧡','💛','💚','💙','💜','💖','💗','💕','💞'];
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.top = window.innerHeight + 'px';
+    heart.style.fontSize = (Math.random() * 30 + 10) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+
+  // MASSIVE heart rain
+  setInterval(() => {
+    for (let i = 0; i < 10; i++) {
+      spawnHeart();
+    }
+  }, 200);
+</script>
+</body>
+</html>
